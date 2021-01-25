@@ -1,0 +1,46 @@
+@import 'variables';
+
+
+.tickets-table {
+  font-size: 18px;
+  width: 58rem;
+  margin: 5rem 2rem 5rem 0;
+  border: 1px solid gray;
+  padding: 1rem;
+  text-align: center;
+}
+
+.table-row button {
+  visibility: hidden;
+}
+
+input:focus {
+  border-color: rgb(95, 175, 255);
+  box-shadow: 0 0 8px 0 rgb(95, 175, 255);
+}
+
+label {
+  width: 5rem;
+  display: inline-block;
+}
+
+.table-row:hover button {
+  visibility: visible;
+}
+
+.ticket-type {
+  padding: 0.4rem 1rem;
+  width: 10rem;
+  height: 2rem;
+  margin-top: 5rem;
+  margin-left: 4rem;
+  background-color: $primary;
+  color: whitesmoke;
+  border: 1px solid #555;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.pointer {
+  cursor: pointer;
+}

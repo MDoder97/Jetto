@@ -1,0 +1,38 @@
+<div class="d-flex">
+  <select class="ticket-type" (change)="filterType($event.target.value)">
+    <option value="All">All tickets</option>
+    <option value="OneWay">One way</option>
+    <option value="Return">Return</option>
+  </select>
+  <table class="tickets-table">
+    <thead>
+    <tr>
+      <th>One-way</th>
+      <th>Origin</th>
+      <th>Destination</th>
+      <th>Depart</th>
+      <th>Return</th>
+      <th>Company</th>
+      <th>Count</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="table-row" *ngFor="let ticket of this.tickets">
+      <td>{{ticket.oneWay}}</td>
+      <td>{{ticket.flight.origin.name}}</td>
+      <td>{{ticket.flight.destination.name}}</td>
+      <td>{{ticket.departDate}}</td>
+      <td>{{ticket.returnDate}}</td>
+      <td class="pointer" (click)="companyPage(ticket.company)">{{ticket.company.name}}</td>
+      <td>{{ticket.count}}</td>
+      <td *ngIf="!this.authService.currentUser.admin">
+        <button mat-raised-button type="button" (click)="addReservation(ticket)">Reserve</button>
+      </td>
+      <td *ngIf="this.authService.currentUser.admin">
+        <button mat-raised-button type="button" (click)="deleteTicket(ticket)">Delete</button>
+        <button class="ml-2" mat-raised-button type="button" (click)="updateTicket(ticket)">Update</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

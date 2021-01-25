@@ -1,0 +1,5 @@
+{
+  "version": "1.0.0",
+  "apiEndpointFlights": "http://localhost:8080/rest/flights",
+  "apiEndpointCompanies": "http://localhost:8080/rest/companies"
+}

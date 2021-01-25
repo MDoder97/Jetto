@@ -1,0 +1,37 @@
+<div class="reservations">
+  <p class="note">Reservation can be cancelled up to 24 hours before departure</p>
+  <table class="tickets-table">
+    <thead>
+    <tr>
+      <th>One-way</th>
+      <th>Origin</th>
+      <th>Destination</th>
+      <th>Depart</th>
+      <th>Return</th>
+      <th>Company</th>
+      <th>Count</th>
+      <th>Available</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="table-row" *ngFor="let reservation of this.reservations">
+      <td>{{reservation.ticket.oneWay}}</td>
+      <td>{{reservation.ticket.flight.origin.name}}</td>
+      <td>{{reservation.ticket.flight.destination.name}}</td>
+      <td>{{reservation.ticket.departDate}}</td>
+      <td>{{reservation.ticket.returnDate}}</td>
+      <td>{{reservation.ticket.company.name}}</td>
+      <td>{{reservation.ticket.count}}</td>
+      <td>{{reservation.available}}</td>
+      <td>
+        <button mat-raised-button type="button" [disabled]="this.dayDifference(reservation.ticket.returnDate) < 1"
+                (click)="deleteReservation(reservation.id)">Cancel
+        </button>
+      </td>
+      <td *ngIf="!reservation.available">
+        <button mat-raised-button type="button" (click)="deleteReservation(reservation.ticket.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

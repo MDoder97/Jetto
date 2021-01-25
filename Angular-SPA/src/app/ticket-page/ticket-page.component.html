@@ -1,0 +1,38 @@
+<div class="input">
+  <div id="update">
+    <form #ticketForm="ngForm" id="ticket-form" (ngSubmit)="updateTicket()">
+      <h2>Update Ticket</h2>
+      <label>Company</label>
+      <select class="select-box" name="company" [compareWith]='compareCompanies' required [(ngModel)]="ticket.company">
+        <option *ngFor="let company of this.companyService.companies" [ngValue]="company">{{company.name}}</option>
+      </select>
+      <br><br>
+      <label>Ticket Type</label>
+      <select class="select-box" name="oneWay" required [(ngModel)]="ticket.oneWay">
+        <option value="true">One-way</option>
+        <option value="false">Return</option>
+      </select>
+      <br><br>
+      <label for="depart">Depart</label>
+      <input id="depart" name="departDate" type="date" required [(ngModel)]="ticket.departDate">
+      <br><br>
+      <label for="return">Return</label>
+      <input id="return" name="returnDate" type="date" required [(ngModel)]="ticket.returnDate">
+      <br><br>
+      <label>Flight</label>
+      <select class="select-box" name="flightId" [compareWith]="compareFlights" required [(ngModel)]="ticket.flight">
+        <option *ngFor="let flight of this.ticketService.flights" [ngValue]="flight">{{flight.origin.name}}
+          - {{flight.destination.name}}</option>
+      </select>
+      <br><br>
+      <label for="count">Count</label>
+      <input id="count" name="count" required [(ngModel)]="ticket.count">
+      <br>
+      <button mat-raised-button type="button" routerLink="/dashboard" routerLinkActive="active">Cancel</button>
+      <button [disabled]="!ticketForm.valid || validateDates() == false"
+              class="mb-1 mt-3 ml-4" mat-raised-button type="submit" form="ticket-form" value="Submit">Update
+      </button>
+    </form>
+
+  </div>
+</div>

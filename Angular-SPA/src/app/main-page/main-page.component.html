@@ -1,0 +1,75 @@
+<div class="dashboard">
+  <div *ngIf="!authService.currentUser.admin" class="ticket-search">
+    <form id="search-form" (input)="filterTable()">
+      <h2>Search tickets</h2>
+      <label for="origin">Origin</label>
+      <input id="origin" name="origin" [(ngModel)]="filter.origin">
+      <br><br>
+      <label for="destination">Destination</label>
+      <input id="destination" name="destination" [(ngModel)]="filter.destination">
+      <br><br>
+      <label for="departSearch">Depart</label>
+      <input id="departSearch" name="departDate" type="date" [(ngModel)]="filter.departDate">
+      <br><br>
+      <label for="returnSearch">Return</label>
+      <input id="returnSearch" name="returnDate" type="date" [(ngModel)]="filter.returnDate">
+      <br>
+    </form>
+  </div>
+  <div *ngIf="authService.currentUser.admin==true" class="admin-forms">
+    <form #ticketForm="ngForm" id="ticket-form" (ngSubmit)="addTicket()">
+      <h2>Add Ticket</h2>
+      <label>Company</label>
+      <select class="select-box" name="company" required [(ngModel)]="ticketModel.company">
+        <option *ngFor="let company of this.companyService.companies" [ngValue]="company">{{company.name}}</option>
+      </select>
+      <br><br>
+      <label>Ticket Type</label>
+      <select class="select-box" name="oneWay" required [(ngModel)]="ticketModel.oneWay">
+        <option value="true">One-way</option>
+        <option value="false">Return</option>
+      </select>
+      <br><br>
+      <label for="depart">Depart</label>
+      <input id="depart" name="departDate" type="date" (input)="validateDates()" required
+             [(ngModel)]="ticketModel.departDate">
+      <br><br>
+      <label for="return">Return</label>
+      <input id="return" name="returnDate" type="date" (input)="validateDates()" required
+             [(ngModel)]="ticketModel.returnDate">
+      <br><br>
+      <label>Flight</label>
+      <select class="select-box" name="flightId" required [(ngModel)]="ticketModel.flight">
+        <option *ngFor="let flight of this.ticketService.flights" [ngValue]="flight">{{flight.origin.name}}
+          - {{flight.destination.name}}</option>
+      </select>
+      <br><br>
+      <label for="count">Count</label>
+      <input id="count" name="count" required [(ngModel)]="ticketModel.count">
+      <br>
+      <button [disabled]="!ticketForm.valid || !datesValid" class="mb-3 mt-2" mat-raised-button type="submit"
+              form="ticket-form" value="Submit">Add
+      </button>
+    </form>
+    <form #registerForm="ngForm" id="register-form" (ngSubmit)="register()">
+      <h2>Register User</h2>
+      <label for="username">Username</label>
+      <input id="username" name="username" required [(ngModel)]="registerModel.username">
+      <br><br>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required [(ngModel)]="registerModel.password">
+      <br><br>
+      <label for="type">Is Admin</label>
+      <select class="select-box" name="isAdmin" required [(ngModel)]="registerModel.isAdmin">
+        <option [ngValue]="true">True</option>
+        <option [ngValue]="false">False</option>
+      </select>
+      <br>
+    </form>
+    <br>
+    <button [disabled]="!registerForm.valid" mat-raised-button type="submit" form="register-form" value="Submit">
+      Register
+    </button>
+  </div>
+  <app-table [ticketList]="this.filteredTickets"></app-table>
+</div>

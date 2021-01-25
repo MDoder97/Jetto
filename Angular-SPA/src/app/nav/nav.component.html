@@ -1,0 +1,13 @@
+<div *ngIf="this.authService.loggedIn()" id="nav"
+     class="d-flex flex-column flex-md-row align-items-center p-2 px-md-4 mb-3 box-shadow">
+  <h5 id="title" class="my-0 font-weight-normal pointer" (click)="mainPage()">AeroCompany</h5>
+  <a *ngIf="!this.authService.currentUser.admin" class="ml-4 pointer" (click)="reservationPage()">Reservations</a>
+  <p class="item-color m-0 p-0 ml-md-auto">{{this.userData.username}}</p>
+  <p class="item-color ml-3 m-0 p-0">{{this.userType}}</p>
+  <div *ngIf="!this.userData?.admin" class="ml-3 d-flex align-items-center">
+    <p class="mb-0">{{this.reservationNumber}}</p>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">book</mat-icon>
+  </div>
+  <a class="item-color ml-3 pointer" (click)="logout()">Logout</a>
+</div>
+

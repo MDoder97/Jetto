@@ -1,0 +1,100 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
+@import '~@angular/material/theming';
+@import '../node_modules/alertifyjs/build/css/alertify.min.css';
+@import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';
+@import 'variables';
+
+@include mat-core();
+$my-theme-primary: mat-palette($mat-grey, 50);
+$my-theme-accent: mat-palette($mat-blue-grey);
+
+$my-theme-warn: mat-palette($mat-red);
+
+$my-theme: mat-dark-theme($my-theme-primary, $my-theme-accent, $my-theme-warn);
+
+@include angular-material-theme($my-theme);
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: rgb(30, 30, 30);
+  color: whitesmoke;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: whitesmoke;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.mat-raised-button {
+  background-color: $accent;
+}
+
+.input {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+input {
+  padding: 0.5rem 1rem;
+  width: 12rem;
+  background-color: $primary;
+  color: whitesmoke;
+  border: 1px solid #555;
+  box-sizing: border-box;
+  outline: none;
+}
+
+input[type='date'] {
+  padding: 0.4rem 1rem;
+  color: whitesmoke;
+  border: 1px solid #555;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: rgb(241, 241, 241);
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  color: rgb(241, 241, 241);
+  background-color: rgb(241, 241, 241);
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked
+.mat-radio-ripple
+.mat-ripple-element {
+  background-color: rgb(241, 241, 241);
+}
+
+label {
+  width: 6rem;
+  display: inline-block;
+}
+
+.select-box {
+  padding: 0.4rem 1rem;
+  width: 12rem;
+  background-color: $primary;
+  color: whitesmoke;
+  border: 1px solid #555;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.select-box:focus {
+  border-color: rgb(95, 175, 255);
+  box-shadow: 0 0 8px 0 rgb(95, 175, 255);
+}

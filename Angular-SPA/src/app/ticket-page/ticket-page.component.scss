@@ -1,0 +1,62 @@
+@import 'variables';
+
+#update {
+  margin: 10rem auto;
+  width: 30%;
+  border: 1px solid gray;
+  padding: 10px;
+  text-align: center;
+}
+
+.myButton {
+  padding: 10px 35px;
+  font-size: 24px;
+}
+
+.leftBtn {
+  margin-right: 1rem;
+}
+
+
+input {
+  padding: 0.5rem 1rem;
+  width: 50%;
+  background-color: $primary;
+  color: whitesmoke;
+  border: 1px solid #555;
+  box-sizing: border-box;
+  outline: none;
+}
+
+input:focus {
+  border-color: rgb(95, 175, 255);
+  box-shadow: 0 0 8px 0 rgb(95, 175, 255);
+}
+
+input[type=date] {
+  padding: 0.4rem 1rem;
+  color: whitesmoke;
+  border: 1px solid #555;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.select-box {
+  padding: 0.4rem 1rem;
+  width: 50%;
+  background-color: $primary;
+  color: whitesmoke;
+  border: 1px solid #555;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.select-box:focus {
+  border-color: rgb(95, 175, 255);
+  box-shadow: 0 0 8px 0 rgb(95, 175, 255);
+}
+
+label {
+  width: 5rem;
+  display: inline-block;
+}

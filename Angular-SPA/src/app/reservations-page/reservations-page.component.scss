@@ -1,0 +1,25 @@
+.tickets-table {
+  font-size: 18px;
+  margin: 5rem auto;
+  border: 1px solid gray;
+  padding: 1rem;
+  text-align: center;
+}
+
+.note {
+  position: absolute;
+  top: 5rem;
+  left: 37%;
+}
+
+.table-row button {
+  visibility: hidden;
+}
+
+.reservations {
+  padding-top: 10rem;
+}
+
+.table-row:hover button {
+  visibility: visible;
+}

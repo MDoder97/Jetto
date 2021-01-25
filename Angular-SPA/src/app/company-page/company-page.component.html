@@ -1,0 +1,22 @@
+<div class="dashboard">
+  <div class="company-form">
+    <form>
+      <h2>{{this.currentCompany.name}}</h2>
+      <br><br>
+      <div *ngIf="this.authService.currentUser.admin">
+        <label for="newName">New Name</label>
+        <input id="newName" name="newName" required [(ngModel)]="updatedCompanyName">
+        <br>
+        <button [disabled] class="mt-4" mat-raised-button (click)="deleteCompany()">Delete</button>
+        <button [disabled] class="ml-4 mt-4" mat-raised-button (click)="updateCompany()">Update</button>
+        <br><br>
+        <label for="newCompany">New Company</label>
+        <input id="newCompany" name="newCompany" required [(ngModel)]="newCompany.name">
+        <br>
+        <button [disabled] class="mt-4" mat-raised-button (click)="addCompany()">Add Company</button>
+        <br><br>
+      </div>
+    </form>
+  </div>
+  <app-table [ticketList]="this.companyTickets"></app-table>
+</div>
